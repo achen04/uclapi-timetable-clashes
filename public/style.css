@@ -1,0 +1,105 @@
+/* styles */
+/* called by your view template */
+
+/* You might want to try something fancier: */
+/* less: http://lesscss.org/ */
+
+* {
+  box-sizing: border-box;
+}
+
+
+html {
+  /** gradient background color **/
+  height: 100%;
+  background: #80ced6; /* For browsers that do not support gradients */    
+  background: -webkit-linear-gradient(left top, #80ced6, #d5f4e6); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #80ced6, #d5f4e6); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #80ced6, #d5f4e6); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #80ced6, #d5f4e6); /* Standard syntax (must be last) */
+
+}
+body {
+  font-family: helvetica, arial, sans-serif;
+  margin: 25px;
+  background-color: transparent;
+}
+
+h1 {
+  font-weight: bold;
+  color: darkblue;
+   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+
+
+form {
+  margin-bottom: 25px;
+  padding: 15px;
+  background-color: #d5f4e6;
+  display: inline-block;
+  width: 340px;
+  margin-left: 35%;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+button {
+  font-size: 16px;
+  border-radius: 3px;
+  background-color: lightgrey;
+  border: 1px solid grey;
+  box-shadow: 2px 2px teal;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: yellow;
+}
+
+button:active {
+  box-shadow: none;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px solid lightgrey;
+}
+
+footer > a {
+  color: #BBBBBB;
+}
+
+.nicejob {
+  text-decoration: line-through;
+}

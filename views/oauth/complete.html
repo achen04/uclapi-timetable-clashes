@@ -1,0 +1,86 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to Glitch!</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <header>
+      <h1>
+        Do you have a time table clash?
+      </h1>
+    </header>
+    
+    <main>
+      <div id="center">
+        
+      
+      <p class="bold">Welcome <span id="full_name"></span>! Please put down the four modules you would like to take this year.</p>
+      <p>
+        Please input the module codes exactly (e.g. COMP202P, COMP3035).
+      </p>
+      </div>
+      <p>
+      <form action="/submission" method="post">
+        Course 1: <input type="text" name="course1"><br>
+        Course 2: <input type="text" name="course2"><br>
+        Course 3: <input type="text" name="course3"><br>
+        Course 4: <input type="text" name="course4"><br>
+        <input type="submit" value="Submit">
+      </form>
+        
+      </p>
+    </main>
+
+
+  
+    <!-- Your web-app is https, so your scripts need to be too -->
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
+    <script src="/complete.js"></script>
+  
+    <script>
+      $("form").on("submit", function(event) {
+        event.preventDefault();
+        var data = $(this).serialize();
+        $.getJSON("/submission", data) 
+          .done(function( json ) {
+            console.dir(json);
+            if (json[0]["module1"] == false ) {
+              alert("You have inputted an invalid module code. Please make sure you follow the specified format.");
+            } else if (json[0]["module1"] == "noclash") {
+              alert("Awesome, there are no clashes!");
+            } else {
+                alert("There's a clash! " + json[0]["module1"] + " clashes with " + json[0]["module2"] + " on "
+                + json[0]["date"]);
+            }
+          })
+          .fail(function( jqxhr, textStatus, error ) {
+            var err = textStatus + ", " + error;
+            console.log( "Request Failed: " + err );
+        });
+      });
+      
+      
+      
+      
+
+    </script>
+
+  </body>
+</html>
